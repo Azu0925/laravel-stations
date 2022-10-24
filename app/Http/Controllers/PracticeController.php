@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Practice;
 
 class PracticeController extends Controller
 {
@@ -16,9 +17,15 @@ class PracticeController extends Controller
         $test = 'practice2';
 		    return view('practice2', ['testParam' => $test]);
     }
-    
+
     public function sample3()
     {
         return view('practice3', ['testParam' => 'test']);
+    }
+
+    public function getPractice()
+    {
+        $practice = Practice::all();
+        return response()->json($practice);
     }
 }
